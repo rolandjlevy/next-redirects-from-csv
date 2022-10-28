@@ -1,12 +1,11 @@
 const readline = require('readline');
-const fs = require('fs');
 const { once } = require('events');
-const skipLines = 1; // ignore the header line
+const fs = require('fs');
+const skipLines = 1; // ignore the header in the csv
 
-const readLines = async (file) => {
-  const result = []
+const readLines = async (inputFile) => {
   const lineReader = readline.createInterface({
-    input: fs.createReadStream(file),
+    input: fs.createReadStream(inputFile),
     crlfDelay: Infinity,
   });
   const lines = [];
@@ -14,27 +13,24 @@ const readLines = async (file) => {
     const parts = line.split(',');
     lines.push(parts);
   });
-  lineReader.on('error', (err) => {
-    console.log('error', err);
-  });
   await once(lineReader, 'close');
   return lines;
 }
 
-const parseLine = (line) => {
-  if (!line || line === '/') {
+const formatString = (str) => {
+  if (!str || str === '/') {
     return '/';
   }
-  return line.endsWith('/') ? line.slice(0, -1) : line;
+  return str.endsWith('/') ? str.slice(0, -1) : str;
 }
 
-const parseRedirects = async (inputFile) => {
+const formatRedirects = async (inputFile) => {
   const lines = await readLines(inputFile);
   return lines.reduce((acc, line, index) => {
-    console.log(index)
+    const [source, destination] = line;
     const redirect = {
-      source: parseLine(line[0]),
-      destination: parseLine(line[1]),
+      source: formatString(source),
+      destination: formatString(destination),
       permanent: true
     }
     if (index >= skipLines && redirect.source !== redirect.destination) {
@@ -45,7 +41,7 @@ const parseRedirects = async (inputFile) => {
 }
 
 const buildRedirects = async ({ inputFile, outputFile }) => {
-  const redirects = await parseRedirects(inputFile)
+  const redirects = await formatRedirects(inputFile)
   let contents = `const redirects = ${JSON.stringify(redirects, null, 2)};\n\n`;
   contents += `module.exports = redirects;`;
   fs.writeFileSync(outputFile, contents);
