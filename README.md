@@ -30,7 +30,8 @@ npm run build-redirects
 - [Next redirects docs](https://nextjs.org/docs/api-reference/next.config.js/redirects)
 - [app is based on this repo](https://github.com/kaimanaagency/pixels-next-redirects)
 - [setting up Express in Next](https://www.youtube.com/watch?v=kmrJkrW-ha0&ab_channel=skell)
-- [about Node's readline module](https://nodejs.org/api/readline.html)
+- [readline module from the docs](https://nodejs.org/api/readline.html)
+- [How to use the readline module](https://gist.github.com/initlove/2478016)
 
 ### Notes
 
