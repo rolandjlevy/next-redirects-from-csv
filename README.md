@@ -37,6 +37,9 @@ npm run build-redirects
 
 - Promise-based solution for readLines function which wasn't used in the end. See [example on stackoverflow](https://stackoverflow.com/questions/69811324/how-can-i-make-a-readline-await-async-promise)
 
+<details>
+  <summary>code</summary>
+  
 ```js
 const readLines = async (file) => {
   const result = []
@@ -55,3 +58,5 @@ const readLines = async (file) => {
   return await Promise.all(promises);
 }
 ```
+
+</details>
