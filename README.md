@@ -20,6 +20,7 @@ npm run build-redirects
 4. Restart next to see the redirects working
 
 ### Links  
+- [Next redirects docs](https://nextjs.org/docs/api-reference/next.config.js/redirects)
 - [app is based on this repo](https://github.com/kaimanaagency/pixels-next-redirects)
 - [setting up Express in Next](https://www.youtube.com/watch?v=kmrJkrW-ha0&ab_channel=skell)
 - [about Node's readline module](https://nodejs.org/api/readline.html)
