@@ -13,12 +13,16 @@
 }
 ```
 2. Upload a CSV file named redirects.csv to the `/server/build-redirects` folder. The format of the CSV file should be two columns with each redirect as a row with old url > new url
-
+<details>
+<summary>See example</summary>
+ 
 | old url   | new url                    |
 |:----------|:---------------------------|
 | /cromwell | https://www.cromwell.co.uk | 
 | /google   | https://google.com         | 
 | /next     | https://nextjs.org         | 
+
+</details>
 
 4. Run this in the terminal
 ```bash
@@ -35,10 +39,10 @@ npm run build-redirects
 
 ### Notes
 
-- Promise-based solution for readLines function which wasn't used in the end. See [example on stackoverflow](https://stackoverflow.com/questions/69811324/how-can-i-make-a-readline-await-async-promise)
+> Promise-based solution for readLines function which wasn't used in the end. See [example on stackoverflow](https://stackoverflow.com/questions/69811324/how-can-i-make-a-readline-await-async-promise)
 
 <details>
-  <summary>code</summary>
+  <summary>See the code</summary>
   
 ```js
 const readLines = async (file) => {
