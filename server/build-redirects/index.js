@@ -2,8 +2,10 @@ const { createInterface } = require('readline');
 const { createReadStream, writeFileSync } = require('fs');
 const { once } = require('events');
 const path = require('path');
-const skipLines = 1; // skip the csv file's first header row
+// skip the csv file's first row which is the header
+const skipLines = 1; 
 
+// Use Node's readline module to read data from a file one line at a time
 const readLines = async (inputFile) => {
   try {
     const lineReader = createInterface({
@@ -29,6 +31,7 @@ const formatString = (str) => {
   return str.endsWith('/') ? str.slice(0, -1) : str;
 }
 
+// Create an array of redirects in a format compatible with next.config.js
 const formatRedirects = async (inputFile) => {
   const lines = await readLines(inputFile);
   return lines.reduce((acc, line, index) => {
@@ -45,6 +48,7 @@ const formatRedirects = async (inputFile) => {
   }, []);
 }
 
+// Build the contents of the output and write it to file
 const buildRedirects = async ({ inputFile, outputFile }) => {
   const redirects = await formatRedirects(inputFile)
   let contents = `const redirects = ${JSON.stringify(redirects, null, 2)};\n\n`;

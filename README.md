@@ -1,6 +1,6 @@
 # Build Next.js redirects from a CSV file
 
-- This app writes a list of redirects from a CSV file to an output file. This gets imported into next.config.js where all redirects are handled in Next.js.
+- This app writes a list of redirects from a CSV file to an output file. This gets imported into next.config.js where redirects are handled in Next.js.
 - Node's readline module is used to provide an interface for reading data from a readable stream, one line at a time.
 
 ### Instructions
@@ -30,7 +30,7 @@ npm run build-redirects
 - Below is the promise-based solution for the readLines function which wasn't used in the end. See [example on stackoverflow](https://stackoverflow.com/questions/69811324/how-can-i-make-a-readline-await-async-promise)
 
 <details>
-  <summary>View code</summary>
+  <summary>View promise-based solution</summary>
   
 ```js
 const readLines = async (file) => {
