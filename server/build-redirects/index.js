@@ -1,20 +1,25 @@
-const fs = require('fs');
-const readline = require('readline');
+const { createInterface } = require('readline');
+const { createReadStream, writeFileSync } = require('fs');
 const { once } = require('events');
+const path = require('path');
 const skipLines = 1; // skip the csv file's first header row
 
 const readLines = async (inputFile) => {
-  const lineReader = readline.createInterface({
-    input: fs.createReadStream(inputFile),
-    crlfDelay: Infinity,
-  });
-  const lines = [];
-  lineReader.on('line', (line) => {
-    const parts = line.split(',');
-    lines.push(parts);
-  });
-  await once(lineReader, 'close');
-  return lines;
+  try {
+    const lineReader = createInterface({
+      input: createReadStream(inputFile),
+      crlfDelay: Infinity, // crlfDelay explained in README Notes
+    });
+    const lines = [];
+    lineReader.on('line', (line) => {
+      const parts = line.split(',');
+      lines.push(parts);
+    });
+    await once(lineReader, 'close');
+    return lines;
+  } catch (err) {
+    console.error(err);
+  }
 }
 
 const formatString = (str) => {
@@ -44,15 +49,12 @@ const buildRedirects = async ({ inputFile, outputFile }) => {
   const redirects = await formatRedirects(inputFile)
   let contents = `const redirects = ${JSON.stringify(redirects, null, 2)};\n\n`;
   contents += `module.exports = redirects;`;
-  fs.writeFileSync(outputFile, contents);
+  writeFileSync(outputFile, contents);
 }
 
-const inputFile = `redirects.csv`;
-const outputFile = `output.js`;
+const inputFile = path.join(__dirname, '/', 'redirects.csv');
+const outputFile = path.join(__dirname, '/', 'output.js');
 
 (async () => {
-  await buildRedirects({
-    inputFile: `${__dirname}/${inputFile}`,
-    outputFile: `${__dirname}/${outputFile}`
-  });
+  await buildRedirects({ inputFile, outputFile });
 })();
