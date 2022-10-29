@@ -1,18 +1,11 @@
 # Build Next.js redirects from a CSV file
 
-- This app builds a list of redirects from a comma separated CSV and writes it to an output file. This is imported into next.config.js where redirects are handled in Next.js.
-- The readline module is used to provide an interface for reading data from a readable stream one line at a time.
+- This app writes a list of redirects from a CSV file to an output file. This gets imported into next.config.js where all redirects are handled in Next.js.
+- Node's readline module is used to provide an interface for reading data from a readable stream, one line at a time.
 
 ### Instructions
 
-1. Add the following to package.json
-```json
-"scripts": {
-  "dev": "node server/index.js",
-  "build-redirects": "node server/build-redirects/index.js"
-}
-```
-2. Upload a CSV file named redirects.csv to the `/server/build-redirects` folder. The format of the CSV file should be two columns with each redirect as a row with old url > new url
+1. Upload a CSV file named redirects.csv to /server/build-redirects. Each row should have the old url followed by the new url as follows:
 
 | old url   | new url                    |
 |:----------|:---------------------------|
@@ -20,11 +13,11 @@
 | /google   | https://google.com         | 
 | /next     | https://nextjs.org         | 
 
-4. Run this in the terminal
+2. Run this in the terminal
 ```bash
 npm run build-redirects
 ```
-4. Restart next to see the redirects working
+3. Restart Next.js to see the redirects working
 
 ### Links  
 - [Next redirects docs](https://nextjs.org/docs/api-reference/next.config.js/redirects)
@@ -60,3 +53,12 @@ const readLines = async (file) => {
 ```
 
 </details>
+
+> These commands have been added to package.json
+
+```json
+"scripts": {
+  "dev": "node server/index.js",
+  "build-redirects": "node server/build-redirects/index.js"
+}
+```
