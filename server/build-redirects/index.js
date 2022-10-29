@@ -1,7 +1,7 @@
+const fs = require('fs');
 const readline = require('readline');
 const { once } = require('events');
-const fs = require('fs');
-const skipLines = 1; // ignore the header in the csv
+const skipLines = 1; // skip the csv file's first header row
 
 const readLines = async (inputFile) => {
   const lineReader = readline.createInterface({
@@ -9,7 +9,7 @@ const readLines = async (inputFile) => {
     crlfDelay: Infinity,
   });
   const lines = [];
-  lineReader.on(`line`, (line) => {
+  lineReader.on('line', (line) => {
     const parts = line.split(',');
     lines.push(parts);
   });
