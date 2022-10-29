@@ -5,7 +5,7 @@ const path = require('path');
 // skip the csv file's first row which is the header
 const skipLines = 1; 
 
-// Use Node's readline module to read data from a file one line at a time
+// Use Node's readline module to read data from the csv file one line at a time
 const readLines = async (inputFile) => {
   try {
     const lineReader = createInterface({
