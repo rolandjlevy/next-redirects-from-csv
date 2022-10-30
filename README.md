@@ -10,12 +10,25 @@
 |:----------|:---------------------------|:-------------------|
 | /cromwell | https://www.cromwell.co.uk | true               | 
 | /google   | https://google.com         | true               |  
-| /next     | https://nextjs.org         | false              |  
+| /next     | https://nextjs.org         | false              | 
 
 2. Run this in the terminal
 ```bash
 npm run build-redirects
 ```
+
+This creates the redirects output file which gets imported into next.config.js
+
+```js
+const redirects = require('./server/build-redirects/output');
+
+module.exports = {
+ async redirects() {
+    return redirects
+  },
+}
+```
+
 3. Restart Next.js to see the redirects working
 
 ### Links  
@@ -30,7 +43,7 @@ npm run build-redirects
 - Below is the promise-based solution for the readLines function which wasn't used in the end. See [example on stackoverflow](https://stackoverflow.com/questions/69811324/how-can-i-make-a-readline-await-async-promise)
 
 <details>
-  <summary>View promise-based solution</summary>
+  <summary>promise-based solution</summary>
   
 ```js
 const readLines = async (file) => {

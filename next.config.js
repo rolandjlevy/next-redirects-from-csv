@@ -2,10 +2,8 @@
 // output is built from server/build-redirects/index.js
 const redirects = require('./server/build-redirects/output');
 
-const nextConfig = {
-  async redirects() {
+module.exports = {
+ async redirects() {
     return redirects
   },
-};
-
-module.exports = nextConfig;
+}

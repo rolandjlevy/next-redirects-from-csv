@@ -15,7 +15,7 @@ const Home: NextPage = () => {
       <main className={styles.main}>
         
         <h2 className={styles.title}>
-          Build Next.js redirects from a CSV file
+           Next.js redirects built from a CSV file
         </h2>
         
         <p className={styles.description}>
