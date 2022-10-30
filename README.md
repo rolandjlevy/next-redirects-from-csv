@@ -1,10 +1,10 @@
 # Build Next.js redirects from a CSV file
 
-- This app writes a list of redirects from a CSV file to an output file. This gets imported into next.config.js where redirects are handled in Next.js.
+- This app builds a list of redirects from a CSV file and writes it to an output file. This gets imported into next.config.js where redirects are handled in Next.js.
 - Node's readline module is used to provide an interface for reading data from a readable stream, one line at a time.
 
 ### Instructions
-1. Upload a CSV file named `redirects.csv` to /server/build-redirects. The first row is a header and will gets skipped. Each row should be in this order: old url, new url, permanent redirect, then parameters for [the has field](https://nextjs.org/docs/api-reference/next.config.js/redirects#header-cookie-and-query-matching).
+1. Upload a CSV file named `redirects.csv` to /server/build-redirects. The first row is a header and gets skipped. Each row should be in this order: old url, new url, permanent redirect, then parameters for [the has field](https://nextjs.org/docs/api-reference/next.config.js/redirects#header-cookie-and-query-matching).
 
 | old url   | new url                    | permanent redirect |
 |:----------|:---------------------------|:-------------------|
@@ -19,8 +19,8 @@ npm run build-redirects
 3. Restart Next.js to see the redirects working
 
 ### Links  
-- [Next redirects docs](https://nextjs.org/docs/api-reference/next.config.js/redirects)
-- [This app is based on this repo](https://github.com/kaimanaagency/pixels-next-redirects)
+- [Next.js redirects docs](https://nextjs.org/docs/api-reference/next.config.js/redirects)
+- [This repo] (https://github.com/kaimanaagency/pixels-next-redirects) was the starting point for this app
 - [How to set up Express in Next.js](https://www.youtube.com/watch?v=kmrJkrW-ha0&ab_channel=skell)
 - [readline module explained in the docs](https://nodejs.org/api/readline.html#readline)
 - [How to use the readline module](https://gist.github.com/initlove/2478016)
