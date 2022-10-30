@@ -20,10 +20,10 @@ npm run build-redirects
 
 ### Links  
 - [Next.js redirects docs](https://nextjs.org/docs/api-reference/next.config.js/redirects)
-- [This repo](https://github.com/kaimanaagency/pixels-next-redirects) was the starting point for this app
-- [How to set up Express in Next.js](https://www.youtube.com/watch?v=kmrJkrW-ha0&ab_channel=skell)
-- [readline module explained in the docs](https://nodejs.org/api/readline.html#readline)
-- [How to use the readline module](https://gist.github.com/initlove/2478016)
+- The starting point for this app was [this repo](https://github.com/kaimanaagency/pixels-next-redirects)
+- How to set up [Express in Next.js](https://www.youtube.com/watch?v=kmrJkrW-ha0&ab_channel=skell)
+- The [readline module](https://nodejs.org/api/readline.html#readline) explained in the docs 
+- An example of [using the readline module](https://gist.github.com/initlove/2478016)
 
 ### Notes
 - [the crlfDelay option in createInterface](https://nodejs.org/api/readline.html#example-read-file-stream-line-by-line) is used to recognize all instances of CR LF which are control characters and used to mark a line break in a text file
