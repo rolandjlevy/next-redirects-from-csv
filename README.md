@@ -5,9 +5,9 @@
 
 ```json
 {
-  source: '/old-page',
-  destination: '/new-page',
-  permanent: true,
+  "source": "/old-page",
+  "destination": "/new-page",
+  "permanent": true,
 }
 ```
 
