@@ -13,11 +13,11 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        
+
         <h2 className={styles.title}>
-           Next.js redirects built from a CSV file
+          Next.js redirects built from a CSV file
         </h2>
-        
+
         <p className={styles.description}>
           Redirect routes:
           <code className={styles.code}>
@@ -40,7 +40,7 @@ const Home: NextPage = () => {
           </code>
         </p>
 
-      
+
       </main>
 
       <footer className={styles.footer}>
