@@ -55,7 +55,7 @@ const formatRedirects = async (inputFile) => {
     const redirect = {
       source: formatString(source),
       destination: formatString(destination),
-      permanent
+      permanent: Boolean(permanent)
     }
     if (params.length) redirect.has = getRedirectHasArray(params);
     if (index >= skipLines && redirect.source !== redirect.destination) {
