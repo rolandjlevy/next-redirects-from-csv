@@ -3,7 +3,7 @@ const { createReadStream, writeFileSync } = require('fs');
 const { once } = require('events');
 const path = require('path');
 // skip the csv file's first row which is the header
-const skipLines = 1; 
+const skipLines = 1;
 
 // Use Node's readline module to read data from the csv file one line at a time
 const readLines = async (inputFile) => {
@@ -31,16 +31,33 @@ const formatString = (str) => {
   return str.endsWith('/') ? str.slice(0, -1) : str;
 }
 
+// Generate array for the `has` field for each redirect
+const getRedirectHasArray = (params) => {
+  const hasArray = [];
+  let item = {}; // items will be { type, key, value }
+  for (let i in params) {
+    if (i % 3 === 0) item.type = params[i];
+    if (i % 3 === 1) item.key = params[i];
+    if (i % 3 === 2) {
+      item.value = params[i];
+      hasArray.push(item);
+      item = {};
+    }
+  }
+  return hasArray;
+}
+
 // Create an array of redirects in a format compatible with next.config.js
 const formatRedirects = async (inputFile) => {
   const lines = await readLines(inputFile);
   return lines.reduce((acc, line, index) => {
-    const [source, destination] = line;
+    const [source, destination, permanent, ...params] = line;
     const redirect = {
       source: formatString(source),
       destination: formatString(destination),
-      permanent: true
+      permanent
     }
+    if (params.length) redirect.has = getRedirectHasArray(params);
     if (index >= skipLines && redirect.source !== redirect.destination) {
       acc.push(redirect);
     }

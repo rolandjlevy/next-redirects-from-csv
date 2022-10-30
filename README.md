@@ -4,13 +4,13 @@
 - Node's readline module is used to provide an interface for reading data from a readable stream, one line at a time.
 
 ### Instructions
-1. Upload a CSV file named redirects.csv to /server/build-redirects. The first row is a header and gets skipped. Each row should have the old url followed by the new url as follows:
+1. Upload a CSV file named `redirects.csv` to /server/build-redirects. The first row is a header and will gets skipped. Each row should be in this order: old url, new url, permanent redirect, then parameters for [the has field](https://nextjs.org/docs/api-reference/next.config.js/redirects#header-cookie-and-query-matching).
 
-| old url   | new url                    |
-|:----------|:---------------------------|
-| /cromwell | https://www.cromwell.co.uk | 
-| /google   | https://google.com         | 
-| /next     | https://nextjs.org         | 
+| old url   | new url                    | permanent redirect |
+|:----------|:---------------------------|:-------------------|
+| /cromwell | https://www.cromwell.co.uk | true               | 
+| /google   | https://google.com         | true               |  
+| /next     | https://nextjs.org         | false              |  
 
 2. Run this in the terminal
 ```bash
