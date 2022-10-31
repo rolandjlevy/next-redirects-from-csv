@@ -1,7 +1,7 @@
 # Build Next.js redirects from a CSV file
 
 > This app builds a list of redirects from a CSV file and writes it to an output file. This gets imported into next.config.js where redirects are handled in Next.js.
-> The format for each redirect needs to be:
+> The format for each redirect should be:
 
 ```json
 {
@@ -14,7 +14,7 @@
 - - -
 
 ### Instructions
-1. Upload a CSV file named `redirects.csv` to /server/build-redirects. The first row is jsut the header and gets ignored. Each row should be in this order: old url, new url, permanent redirect, then parameters for [the has field](https://nextjs.org/docs/api-reference/next.config.js/redirects#header-cookie-and-query-matching).
+1. Upload a CSV file named `redirects.csv` to /server/build-redirects. The first row is just the header and gets ignored. Each row should be in this order: old url, new url, permanent redirect, then parameters for [the has field](https://nextjs.org/docs/api-reference/next.config.js/redirects#header-cookie-and-query-matching).
 
 | old url   | new url                    | permanent redirect |
 |:----------|:---------------------------|:-------------------|
